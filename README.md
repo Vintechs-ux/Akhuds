@@ -36,12 +36,12 @@ To get started with the Akhuds project, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/Akhuds_.git
+   git clone https://github.com/yourusername/Akhuds.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd Akhuds_
+   cd Akhuds
    ```
 
 3. Install the required dependencies:
