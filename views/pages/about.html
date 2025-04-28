@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Akhuds_</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-in {
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .bounce-in {
+            animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-[Poppins]">
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center py-5">
+                <h1 class="text-3xl font-bold text-orange-500 tracking-tight bounce-in">Akhuds_</h1>
+                <div class="hidden md:flex space-x-8">
+                    <a href="/pages/index.html" class="text-gray-800 font-medium hover:text-orange-500 transition-all duration-300 hover:scale-110">Home</a>
+                    <a href="/pages/products.html" class="text-gray-800 font-medium hover:text-orange-500 transition-all duration-300 hover:scale-110">Products</a>
+                    <a href="/pages/about.html" class="text-gray-800 font-medium hover:text-orange-500 transition-all duration-300 hover:scale-110">About</a>
+                </div>
+                <button class="md:hidden text-gray-800 hover:rotate-180 transition-transform duration-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative min-h-[60vh] flex items-center pt-16 bg-gradient-to-br from-orange-500 via-orange-400 to-yellow-400">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="container mx-auto px-6 relative">
+            <div class="text-center text-white">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 slide-in">About Us</h1>
+                <p class="text-xl mb-10 text-gray-100 max-w-2xl mx-auto fade-in">
+                    Mengenal lebih dekat dengan Akhuds_ dan perjalanan kami dalam dunia fashion
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-12 fade-in">
+                    <h2 class="text-3xl font-bold mb-6">Our Story</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Akhuds adalah merek pakaian yang berasal dari inovasi generasi muda. Kami didirikan oleh seorang remaja berusia 17 tahun dan berkomitmen untuk menyediakan koleksi pakaian yang menggabungkan desain kreatif, seni visual, dan elemen budaya yang berbeda.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Produk pertama kami adalah baju dengan motif yang memadukan tulisan Arab dan nuansa misterius, menghasilkan gaya yang berani dan asli. Kami terus berusaha mengembangkan portofolio produk yang beragam untuk memenuhi kebutuhan pelanggan yang berbeda, meskipun kami masih dalam tahap awal.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-12 fade-in">
+                    <h3 class="text-2xl font-bold mb-8">Contact Information</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="flex items-center group">
+                                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors">
+                                    <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-semibold mb-1">Phone</h4>
+                                    <p class="text-gray-600">+62 812 2237 6739</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center group">
+                                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors">
+                                    <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-semibold mb-1">Email</h4>
+                                    <p class="text-gray-600">info@akhuds_.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="flex items-center group">
+                                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors">
+                                    <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-semibold mb-1">Location</h4>
+                                    <p class="text-gray-600">Jl. Panjang Jiwo, Surabaya</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden fade-in">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=YOUR_MAPS_EMBED_CODE"
+                        width="100%"
+                        height="450"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        class="w-full">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold text-orange-500 mb-6">Akhuds_</h3>
+                    <p class="text-gray-400 leading-relaxed">Menghadirkan fashion berkualitas dengan desain yang unik dan eksklusif untuk gaya hidup modern Anda.</p>
+                </div>
+                <div class="fade-in" style="animation-delay: 0.2s">
+                    <h4 class="text-xl font-semibold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="/pages/products.html" class="text-gray-400 hover:text-orange-500 transition-colors hover:translate-x-2 inline-block">Products</a></li>
+                        <li><a href="/pages/about.html" class="text-gray-400 hover:text-orange-500 transition-colors hover:translate-x-2 inline-block">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="fade-in" style="animation-delay: 0.4s">
+                    <h4 class="text-xl font-semibold mb-6">Contact Us</h4>
+                    <div class="space-y-3">
+                        <p class="text-gray-400 flex items-center hover:text-orange-500 transition-colors cursor-pointer">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                            +62 812 2237 6739
+                        </p>
+                        <p class="text-gray-400 flex items-center hover:text-orange-500 transition-colors cursor-pointer">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            info@akhuds_.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Akhuds_. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.fade-in, .slide-in').forEach((el) => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

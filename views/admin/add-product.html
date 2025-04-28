@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Produk - Admin Fashion Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.js"></script>
+    <script>
+     
+        if (!sessionStorage.getItem('adminLoggedIn')) {
+            window.location.href = '/admin/login.html';
+        }
+    </script>
+</head>
+<body class="bg-gray-100">
+    <!-- Admin Navbar -->
+    <nav class="bg-gray-900 text-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-orange-500">Admin Panel</h1>
+                </div>
+                <div class="space-x-6">
+                    <a href="/admin/dashboard.html" class="hover:text-orange-500">Dashboard</a>
+                    <a href="/admin/add-product.html" class="hover:text-orange-500">Tambah Produk</a>
+                    <a href="../pages/index.html" class="hover:text-orange-500">Lihat Website</a>
+                    <a href="#" onclick="logout()" class="hover:text-orange-500">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-6">Tambah Produk Baru</h2>
+            
+            <form id="addProductForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        Nama Produk
+                    </label>
+                    <input type="text" name="name" required
+                           class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        Harga
+                    </label>
+                    <input type="number" name="price" required
+                           class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        Deskripsi
+                    </label>
+                    <textarea name="description" rows="4" required
+                              class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        Nomor WhatsApp
+                    </label>
+                    <input type="text" name="whatsapp" required
+                           placeholder="Format: 628xxxxxxxxxx"
+                           class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        Gambar Produk
+                    </label>
+                    <input type="file" name="image" accept="image/*" required
+                           class="w-full">
+                </div>
+
+                <div id="imagePreview" class="hidden">
+                    <img src="" alt="Preview" class="max-h-64 rounded-lg">
+                </div>
+
+                <button type="submit" 
+                        class="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-orange-600 transition">
+                    Simpan Produk
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+     
+        const imageInput = document.querySelector('input[name="image"]');
+        const imagePreview = document.getElementById('imagePreview');
+        const previewImg = imagePreview.querySelector('img');
+
+        imageInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImg.src = e.target.result;
+                    imagePreview.classList.remove('hidden');
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+
+        document.getElementById('addProductForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            try {
+                const formData = new FormData(e.target);
+                
+                const response = await fetch('/api/products', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Gagal menambah produk');
+                }
+
+                alert('Produk berhasil ditambahkan!');
+                window.location.href = '/admin/dashboard.html';
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        });
+    </script>
+    <script>
+        function logout() {
+            sessionStorage.removeItem('adminLoggedIn');
+            window.location.href = '/admin/login.html';
+        }
+    </script>
+</body>
+</html>

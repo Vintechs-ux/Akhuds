@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Fashion Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script>
+       
+        if (!sessionStorage.getItem('adminLoggedIn')) {
+            window.location.href = '/admin/login.html';
+        }
+    </script>
+</head>
+<body class="bg-gray-100">
+    
+    <nav class="bg-gray-900 text-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-orange-500">Admin Panel</h1>
+                </div>
+                <div class="space-x-6">
+                    <a href="/admin/dashboard.html" class="hover:text-orange-500">Dashboard</a>
+                    <a href="/admin/add-product.html" class="hover:text-orange-500">Tambah Produk</a>
+                    <a href="../pages/index.html" class="hover:text-orange-500">Lihat Website</a>
+                    <a href="#" onclick="logout()" class="hover:text-orange-500">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Daftar Produk</h2>
+                <a href="/admin/add-product.html" 
+                   class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition">
+                    + Tambah Produk
+                </a>
+            </div>
+
+        
+            <div class="overflow-x-auto">
+                <table class="min-w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Gambar
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Nama Produk
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Harga
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                WhatsApp
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Aksi
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsList" class="bg-white divide-y divide-gray-200">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function loadProducts() {
+            try {
+                const response = await fetch('/api/products');
+                const data = await response.json();
+                
+                const productsList = document.getElementById('productsList');
+                if (data.products && data.products.length > 0) {
+                    productsList.innerHTML = data.products.map(product => `
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <img src="${product.image}" alt="${product.name}" class="h-16 w-16 object-cover rounded">
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">${product.name}</div>
+                                <div class="text-sm text-gray-500">${product.description.substring(0, 50)}...</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Rp ${parseInt(product.price).toLocaleString()}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">${product.whatsapp}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <button onclick="deleteProduct(${product.id})" 
+                                        class="text-red-600 hover:text-red-900">
+                                    Hapus
+                                </button>
+                            </td>
+                        </tr>
+                    `).join('');
+                } else {
+                    productsList.innerHTML = `
+                        <tr>
+                            <td colspan="5" class="px-6 py-4 text-center text-gray-500">
+                                Belum ada produk yang ditambahkan
+                            </td>
+                        </tr>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        async function deleteProduct(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus produk ini?')) {
+                try {
+                    const response = await fetch(`/api/products/${id}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        alert('Produk berhasil dihapus');
+                        loadProducts();
+                    } else {
+                        throw new Error('Gagal menghapus produk');
+                    }
+                } catch (error) {
+                    alert('Error: ' + error.message);
+                }
+            }
+        }
+
+        loadProducts();
+    </script>
+    <script>
+        function logout() {
+            sessionStorage.removeItem('adminLoggedIn');
+            window.location.href = '/admin/login.html';
+        }
+    </script>
+</body>
+</html>
